@@ -1,0 +1,41 @@
+<svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circular orbit guide matching Lottie -->
+  <circle cx="150" cy="150" r="136" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="3 5" opacity="0.55" />
+  <circle cx="150" cy="150" r="105" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="2 4" opacity="0.4" />
+
+  <!-- Left Sparkle Star (Amber/Orange) -->
+  <g transform="translate(34, 70) rotate(55)">
+    <rect x="-3.92" y="-14" width="7.84" height="28" rx="3.92" fill="#F59E0B" />
+    <rect x="-14" y="-3.92" width="28" height="7.84" rx="3.92" fill="#F59E0B" />
+  </g>
+
+  <!-- Right Sparkle Star (Amber/Orange) -->
+  <g transform="translate(266, 70) rotate(48)">
+    <rect x="-3.36" y="-12" width="6.72" height="24" rx="3.36" fill="#F59E0B" />
+    <rect x="-12" y="-3.36" width="24" height="6.72" rx="3.36" fill="#F59E0B" />
+  </g>
+
+  <!-- Left Teammate (Blue #2563EB) -->
+  <g transform="rotate(-2.5, 78, 154)">
+    <!-- Blue Head -->
+    <circle cx="78" cy="114" r="28" fill="#2563EB" />
+    <!-- Blue Torso / Pillar (Capsule rx=33) -->
+    <rect x="35" y="154" width="86" height="80" rx="33" fill="#2563EB" />
+  </g>
+
+  <!-- Right Teammate (Green #16A34A) -->
+  <g transform="rotate(2.5, 222, 154)">
+    <!-- Green Head -->
+    <circle cx="222" cy="114" r="28" fill="#16A34A" />
+    <!-- Green Torso / Pillar (Capsule rx=33) -->
+    <rect x="179" y="154" width="86" height="80" rx="33" fill="#16A34A" />
+  </g>
+
+  <!-- Center Leader (Amber / Orange #F59E0B) - Front layer -->
+  <g>
+    <!-- Leader Head -->
+    <circle cx="150" cy="74" r="36" fill="#F59E0B" />
+    <!-- Leader Torso (Rounded cushion in front of blue & green) -->
+    <rect x="91" y="126" width="118" height="88" rx="26" fill="#F59E0B" />
+  </g>
+</svg>

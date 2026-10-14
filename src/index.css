@@ -1,0 +1,307 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+}
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'tnum';
+  font-variant-numeric: tabular-nums;
+}
+
+html, body, #root {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'tnum';
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  max-width: 100vw;
+  height: 100%;
+  overflow-x: hidden;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: none;
+  background-color: #ffffff;
+}
+
+/* Ensure code, numeric badges, scores, tables and monospace elements also use Inter with tabular numerals */
+code, kbd, samp, pre, .font-mono {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace !important;
+  font-feature-settings: 'tnum' 1, 'cv02' 1, 'cv03' 1, 'cv04' 1, 'cv11' 1;
+  font-variant-numeric: tabular-nums;
+}
+
+button, input, optgroup, select, textarea, table, th, td {
+  font-family: inherit;
+}
+
+html.modal-open,
+body.modal-open {
+  overflow: hidden !important;
+  touch-action: none !important;
+  overscroll-behavior: contain !important;
+  height: 100% !important;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Ensure no element unintentionally expands viewport width */
+img, svg, video, canvas, audio, iframe, embed, object {
+  max-width: 100%;
+}
+
+/* Ensure consistent height for date inputs across browsers */
+input[type="date"] {
+  height: 2.5rem;
+  min-height: 2.5rem;
+  max-height: 2.5rem;
+  line-height: 1.25rem;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   MINIMALIST & STYLISH SCROLLBAR & SCROLL PROGRESS BAR
+   Didesain ramping, halus, dan harmonis tanpa warna mencolok
+   atau kontras tajam dengan latar belakang aplikasi.
+   ========================================================= */
+
+/* Global Scrollbar (Firefox standard) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(203, 213, 225, 0.6) transparent;
+}
+
+/* Global Webkit Scrollbars (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(203, 213, 225, 0.65);
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.85);
+}
+
+/* Custom Slim Scrollbar Utility */
+.custom-scrollbar::-webkit-scrollbar,
+.slim-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb,
+.slim-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(203, 213, 225, 0.5);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover,
+.slim-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.75);
+}
+
+/* Hide scrollbar while maintaining swipe / scroll capability */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* =========================================================
+   ANIMATED AMBIENT CARD GRADIENT (LIVING CARD EFFECT)
+   Efek gradasi hidup dengan arah pencahayaan dinamis yang
+   bergerak, timbul-redup (breathing glow), dan berotasi halus.
+   ========================================================= */
+
+@keyframes cardGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes cardAmbientPulse1 {
+  0% {
+    opacity: 0.35;
+    transform: translate(0%, 0%) scale(1);
+  }
+  33% {
+    opacity: 0.75;
+    transform: translate(12%, 8%) scale(1.15);
+  }
+  66% {
+    opacity: 0.45;
+    transform: translate(-8%, 15%) scale(0.95);
+  }
+  100% {
+    opacity: 0.35;
+    transform: translate(0%, 0%) scale(1);
+  }
+}
+
+@keyframes cardAmbientPulse2 {
+  0% {
+    opacity: 0.65;
+    transform: translate(0%, 0%) scale(1.1);
+  }
+  40% {
+    opacity: 0.25;
+    transform: translate(-15%, -10%) scale(0.9);
+  }
+  75% {
+    opacity: 0.8;
+    transform: translate(10%, -12%) scale(1.2);
+  }
+  100% {
+    opacity: 0.65;
+    transform: translate(0%, 0%) scale(1.1);
+  }
+}
+
+@keyframes cardSheenSweep {
+  0% {
+    transform: translateX(-120%) rotate(25deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateX(160%) rotate(25deg);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateX(200%) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+.animate-card-gradient {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 28%, #3b82f6 52%, #4338ca 78%, #1d4ed8 100%);
+  background-size: 260% 260%;
+  animation: cardGradientShift 12s ease infinite;
+}
+
+/* Category-specific Static Gradients (Smooth, Harmonious & Professional) */
+/* 1. Tunjangan: Biru ke biru agak muda dikit */
+.gradient-card-tunjangan {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 38%, #3b82f6 72%, #60a5fa 100%);
+}
+
+/* 2. Bonus: Lavender ke ungu muda */
+.gradient-card-bonus {
+  background: linear-gradient(135deg, #581c87 0%, #6d28d9 35%, #7c3aed 68%, #9333ea 88%, #a855f7 100%);
+}
+
+/* 3. Insentif: Merah ke merah muda */
+.gradient-card-insentif {
+  background: linear-gradient(135deg, #991b1b 0%, #b91c1c 30%, #dc2626 62%, #ef4444 84%, #f87171 100%);
+}
+
+/* 4. BPJS: Hijau resmi BPJS ke toska (perpaduan harmonis logo BPJS Kesehatan & Ketenagakerjaan) */
+.gradient-card-bpjs {
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 28%, #047857 55%, #059669 80%, #0d9488 100%);
+}
+
+/* 5. Pajak: Biru gelap gradasi (Navy DJP berwibawa & profesional) */
+.gradient-card-pajak {
+  background: linear-gradient(135deg, #091224 0%, #0f1e40 32%, #162f68 64%, #1e3a8a 86%, #1e40af 100%);
+}
+
+.animate-ambient-pulse-1 {
+  animation: cardAmbientPulse1 9s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-ambient-pulse-2 {
+  animation: cardAmbientPulse2 11s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-sheen-sweep {
+  animation: cardSheenSweep 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes portalProgressOneShot {
+  0% {
+    width: 0%;
+    left: 0;
+  }
+  15% {
+    width: 28%;
+  }
+  40% {
+    width: 58%;
+  }
+  70% {
+    width: 82%;
+  }
+  90% {
+    width: 95%;
+  }
+  100% {
+    width: 100%;
+    left: 0;
+  }
+}
+
+.animate-portal-progress-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  animation: portalProgressOneShot 2.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  will-change: width;
+}
+
+@keyframes promoCardShimmer {
+  0% {
+    transform: translateX(-160%) skewX(-20deg);
+  }
+  35% {
+    transform: translateX(260%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(260%) skewX(-20deg);
+  }
+}
+
+.animate-promo-shimmer {
+  animation: promoCardShimmer 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-card-gradient,
+  .animate-ambient-pulse-1,
+  .animate-ambient-pulse-2,
+  .animate-sheen-sweep,
+  .animate-portal-progress-line,
+  .animate-promo-shimmer {
+    animation: none !important;
+  }
+}
+

@@ -1,0 +1,155 @@
+{
+  "version": 2,
+  "outputDirectory": "dist",
+  "regions": ["sin1"],
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/(favicon\\.png|apple-touch-icon.*\\.png|pwa-.*\\.png)",
+      "destination": "/gambar/$1",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap/",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/checkingtools",
+      "destination": "/checking-tools",
+      "permanent": true
+    },
+    {
+      "source": "/checkingtools/:match*",
+      "destination": "/checking-tools/:match*",
+      "permanent": true
+    },
+    {
+      "source": "/checking",
+      "destination": "/checking-tools",
+      "permanent": true
+    },
+    {
+      "source": "/checking/:match*",
+      "destination": "/checking-tools/:match*",
+      "permanent": true
+    },
+    {
+      "source": "/checking-tool",
+      "destination": "/checking-tools",
+      "permanent": true
+    },
+    {
+      "source": "/checking-tool/:match*",
+      "destination": "/checking-tools/:match*",
+      "permanent": true
+    },
+    {
+      "source": "/eportal",
+      "destination": "/e-portal",
+      "permanent": true
+    },
+    {
+      "source": "/eportal/:match*",
+      "destination": "/e-portal/:match*",
+      "permanent": true
+    },
+    {
+      "source": "/portal",
+      "destination": "/e-portal",
+      "permanent": true
+    },
+    {
+      "source": "/portal/:match*",
+      "destination": "/e-portal/:match*",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/proxy-portal",
+      "destination": "/api/proxy-portal"
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/:match*",
+      "destination": "/index.html"
+    }
+  ]
+}

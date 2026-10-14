@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konfirmasi Pendaftaran - HRMatrix Indonesia</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .email-body {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 32px 20px;
+      background-color: #ffffff;
+    }
+    .greeting {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+    .text-p {
+      font-size: 14px;
+      color: #334155;
+      margin-bottom: 16px;
+      line-height: 1.65;
+    }
+    .highlight-box {
+      background-color: #f8fafc;
+      border-left: 4px solid #2563eb;
+      padding: 16px 20px;
+      margin: 24px 0;
+      border-radius: 0 12px 12px 0;
+    }
+    .highlight-box p {
+      margin: 0;
+      font-size: 13.5px;
+      color: #334155;
+      font-style: italic;
+    }
+    .card-data {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 24px 0;
+    }
+    .card-header {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #1e40af;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .info-grid {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .info-grid td {
+      padding: 5px 0;
+      font-size: 13px;
+      vertical-align: top;
+    }
+    .label {
+      color: #64748b;
+      width: 42%;
+      font-weight: 500;
+    }
+    .value {
+      color: #0f172a;
+      font-weight: 600;
+      width: 58%;
+    }
+    .signature {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid #f1f5f9;
+    }
+    .signature-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .signature-title {
+      font-size: 12px;
+      color: #2563eb;
+      font-weight: 600;
+    }
+    .footer-note {
+      margin-top: 40px;
+      font-size: 11.5px;
+      color: #94a3b8;
+      text-align: center;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-body">
+    <!-- HEADER BRAND WITH LOGO ICON -->
+    <table border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 28px;">
+      <tr>
+        <td style="vertical-align: middle; padding-right: 12px;">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48" style="display: block;">
+            <rect x="8" y="8" width="22" height="84" rx="11" fill="#2563EB" />
+            <rect x="70" y="8" width="22" height="84" rx="11" fill="#16A34A" />
+            <circle cx="50" cy="22" r="13" fill="#F59E0B" />
+            <path d="M 19 42 C 28 72, 72 72, 81 42 C 73 56, 27 56, 19 42 Z" fill="url(#logoBridgeGrad)" />
+            <defs>
+              <linearGradient id="logoBridgeGrad" x1="19" y1="42" x2="81" y2="42" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#3B82F6" />
+                <stop offset="0.6" stop-color="#2563EB" />
+                <stop offset="1" stop-color="#22C55E" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </td>
+        <td style="vertical-align: middle;">
+          <div style="font-size: 22px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; line-height: 1.1;">
+            HR<span style="color: #2563eb;">Matrix</span>
+          </div>
+          <div style="font-size: 11px; color: #64748b; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; margin-top: 2px;">
+            INDONESIA
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <!-- UCAPAN SAPAAN & TERIMA KASIH -->
+    <div class="greeting">Halo, {{user_name}}!</div>
+    
+    <p class="text-p">
+      Terima kasih telah melakukan pendaftaran profil perusahaan Anda di **HRMatrix Indonesia**. Kami sangat senang dan mengapresiasi kepercayaan Anda dalam memilih HRMatrix sebagai solusi pengelolaan SDM dan penggajian perusahaan Anda.
+    </p>
+
+    <!-- PESAN KHUSUS DARI PENCIPTA -->
+    <div class="highlight-box">
+      <p>
+        "Terima kasih atas kepercayaannya menggunakan HRMatrix. Harapan kami, platform ini dapat mempermudah tata kelola absensi, kalkulasi PPh 21 TER, BPJS, hingga otomatisasi slip gaji perusahaan Anda secara mandiri, aman, dan tanpa biaya server."
+      </p>
+      <div style="margin-top: 10px; font-weight: 700; font-size: 12px; color: #1e293b; font-style: normal;">
+        — Alvareza H. Pratama <span style="font-weight: 400; color: #64748b;">(Pencipta HRMatrix)</span>
+      </div>
+    </div>
+
+    <!-- CARD DATA PENGGUNA -->
+    <div class="card-data">
+      <div class="card-header">Rangkuman Data Pengelola Utama</div>
+      <table class="info-grid">
+        <tr>
+          <td class="label">Nama Pengelola:</td>
+          <td class="value">{{user_name}}</td>
+        </tr>
+        <tr>
+          <td class="label">Email Pengelola:</td>
+          <td class="value">{{user_email}}</td>
+        </tr>
+        <tr>
+          <td class="label">Nomor Telepon:</td>
+          <td class="value">{{user_phone}}</td>
+        </tr>
+        <tr>
+          <td class="label">Peran Anda:</td>
+          <td class="value">{{user_role}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- CARD DATA PERUSAHAAN -->
+    <div class="card-data">
+      <div class="card-header">Rangkuman Profil Perusahaan</div>
+      <table class="info-grid">
+        <tr>
+          <td class="label">Nama Perusahaan:</td>
+          <td class="value">{{company_name}}</td>
+        </tr>
+        <tr>
+          <td class="label">Email Resmi Perusahaan:</td>
+          <td class="value">{{company_email}}</td>
+        </tr>
+        <tr>
+          <td class="label">Badan Hukum:</td>
+          <td class="value">{{legal_entity}}</td>
+        </tr>
+        <tr>
+          <td class="label">Jenis Industri:</td>
+          <td class="value">{{industry}}</td>
+        </tr>
+        <tr>
+          <td class="label">Estimasi Karyawan:</td>
+          <td class="value">{{employee_count}} Karyawan</td>
+        </tr>
+        <tr>
+          <td class="label">Waktu Pendaftaran:</td>
+          <td class="value">{{registration_date}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <p class="text-p" style="margin-top: 24px;">
+      Seluruh data perusahaan Anda tersimpan privat secara aman di dalam penyimpanan browser lokal perangkat Anda (IndexedDB Local Storage). Apabila Anda membutuhkan konsultasi atau bantuan customisasi fitur khusus, jangan ragu untuk menghubungi kami.
+    </p>
+
+    <!-- SIGNATURE -->
+    <div class="signature">
+      <div class="text-p" style="margin-bottom: 12px;">Salam hangat,</div>
+      <div class="signature-name">Alvareza H. Pratama</div>
+      <div class="signature-title">Pencipta & Pengembang HRMatrix Indonesia</div>
+    </div>
+
+    <!-- FOOTER NOTE -->
+    <div class="footer-note">
+      <p>&copy; 2026 HRMatrix Indonesia. Email otomatis pendaftaran sistem.</p>
+    </div>
+  </div>
+</body>
+</html>

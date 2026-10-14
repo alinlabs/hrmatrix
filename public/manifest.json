@@ -1,0 +1,21 @@
+{
+  "id": "/",
+  "name": "HRMatrix - Sistem Payroll & HR",
+  "short_name": "HRMatrix",
+  "description": "Aplikasi HRMatrix - Payroll, Kehadiran, Administrasi HR, dan Evaluasi KPI Karyawan.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "lang": "id",
+  "icons": [
+    {
+      "src": "/gambar/pwa-maskable-512x512.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

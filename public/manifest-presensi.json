@@ -1,0 +1,27 @@
+{
+  "id": "/my-presensi",
+  "name": "My Presensi",
+  "short_name": "My Presensi",
+  "description": "Aplikasi Presensi Karyawan HRMatrix - Akses Cepat QR Code Presensi Online.",
+  "start_url": "/my-presensi",
+  "scope": "/my-presensi",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#1E40AF",
+  "background_color": "#1E40AF",
+  "lang": "id",
+  "icons": [
+    {
+      "src": "/gambar/pwa-presensi-512x512.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-3people.svg",
+      "sizes": "300x300",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

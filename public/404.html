@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>HRMatrix Indonesia</title>
+  <script>
+    // SPA fallback redirect for static web servers (GitHub Pages, Netlify, Apache, Nginx, S3)
+    (function() {
+      var path = window.location.pathname || '';
+      var search = window.location.search || '';
+      var hash = window.location.hash || '';
+
+      // Avoid infinite redirect loop if already at root or index.html
+      if (path === '/' || path === '' || path === '/index.html') {
+        return;
+      }
+
+      // If user requested sitemap alias, send cleanly to sitemap.xml
+      if (path === '/sitemap' || path === '/sitemap/') {
+        window.location.replace('/sitemap.xml');
+        return;
+      }
+
+      // If user requested sitemap.xml directly and static server served 404.html
+      if (path === '/sitemap.xml') {
+        var target = path + search + hash;
+        try {
+          sessionStorage.setItem('hrmatrix_spa_redirect', target);
+        } catch (e) {}
+        window.location.replace('/?redirect=' + encodeURIComponent(target));
+        return;
+      }
+
+      if (path === '/robots.txt') {
+        var targetRobots = path + search + hash;
+        try {
+          sessionStorage.setItem('hrmatrix_spa_redirect', targetRobots);
+        } catch (e) {}
+        window.location.replace('/?redirect=' + encodeURIComponent(targetRobots));
+        return;
+      }
+
+      // Avoid re-redirecting if ?redirect= is already present
+      if (search.indexOf('redirect=') !== -1) {
+        return;
+      }
+
+      // Store intended path in sessionStorage and redirect cleanly
+      var target = path + search + hash;
+      try {
+        sessionStorage.setItem('hrmatrix_spa_redirect', target);
+      } catch (e) {}
+
+      // Redirect to root with query parameter
+      window.location.replace('/?redirect=' + encodeURIComponent(target));
+    })();
+  </script>
+</head>
+<body style="margin: 0; font-family: system-ui, -apple-system, sans-serif; background: #f8fafc; display: flex; align-items: center; justify-content: center; height: 100vh;">
+  <div style="text-align: center; color: #64748b;">
+    <div style="width: 32px; height: 32px; border: 3px solid #cbd5e1; border-top-color: #2563eb; border-radius: 50%; margin: 0 auto 12px; animation: spin 0.8s linear infinite;"></div>
+    <p style="font-size: 13px; font-weight: 500;">Memuat HRMatrix Indonesia...</p>
+  </div>
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</body>
+</html>

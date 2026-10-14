@@ -1,0 +1,26 @@
+# Permanent Redirects for Assets
+/favicon.png                        /gambar/favicon.png                        301
+/apple-touch-icon.png               /gambar/pwa-maskable-512x512.png           301
+/apple-touch-icon-presensi.png      /gambar/pwa-presensi-512x512.png           301
+/pwa-192x192.png                    /gambar/pwa-maskable-512x512.png           301
+/pwa-512x512.png                    /gambar/pwa-maskable-512x512.png           301
+/pwa-maskable-512x512.png           /gambar/pwa-maskable-512x512.png           301
+/pwa-presensi-192x192.png           /gambar/pwa-presensi-512x512.png           301
+/pwa-presensi-512x512.png           /gambar/pwa-presensi-512x512.png           301
+/pwa-presensi-maskable-512x512.png  /gambar/pwa-presensi-512x512.png           301
+
+# Aliases for direct clean navigation
+/sitemap                            /sitemap.xml                               301
+/checkingtools                      /checking-tools                            301
+/checkingtools/*                    /checking-tools/:splat                     301
+/checking-tool                      /checking-tools                            301
+/checking-tool/*                    /checking-tools/:splat                     301
+/checking                           /checking-tools                            301
+/checking/*                         /checking-tools/:splat                     301
+/eportal                            /e-portal                                  301
+/eportal/*                          /e-portal/:splat                           301
+/portal                             /e-portal                                  301
+/portal/*                           /e-portal/:splat                           301
+
+# SPA Wildcard Fallback
+/*                                  /index.html                                200
