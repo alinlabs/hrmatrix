@@ -1,0 +1,416 @@
+import React, { useState, useEffect } from 'react';
+import { X } from 'lucide-react';
+import { GAVendor, OfficePermit, VendorCategory } from './types';
+import { GAStorage } from './storage-ga';
+import { Modal } from '../../components/ui/modal';
+
+interface ModalVendorProps {
+  isOpen: boolean;
+  onClose: () => void;
+  mode: 'vendor' | 'permit';
+  onSaved?: () => void;
+}
+
+export const ModalVendor: React.FC<ModalVendorProps> = ({ isOpen, onClose, mode, onSaved }) => {
+  const [companyName, setCompanyName] = useState('');
+  const [vendorCategory, setVendorCategory] = useState<VendorCategory>('SUPPLIER_ATK');
+  const [contactPerson, setContactPerson] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+  const [contractStartDate, setContractStartDate] = useState(
+    new Date().toISOString().split('T')[0]
+  );
+  const [contractEndDate, setContractEndDate] = useState(
+    new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+  );
+  const [paymentTerms, setPaymentTerms] = useState('TOP 30 Hari');
+  const [rating, setRating] = useState(5);
+  const [vendorNotes, setVendorNotes] = useState('');
+
+  const [permitNumber, setPermitNumber] = useState('');
+  const [permitName, setPermitName] = useState('');
+  const [issuer, setIssuer] = useState('');
+  const [permitCategory, setPermitCategory] = useState<OfficePermit['category']>('GEDUNG_TATA_KOTA');
+  const [issuedDate, setIssuedDate] = useState(new Date().toISOString().split('T')[0]);
+  const [expiryDate, setExpiryDate] = useState(
+    new Date(Date.now() + 365 * 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+  );
+  const [picName, setPicName] = useState('');
+  const [annualCost, setAnnualCost] = useState(0);
+  const [permitNotes, setPermitNotes] = useState('');
+
+  useEffect(() => {
+    if (isOpen) {
+      setCompanyName('');
+      setVendorCategory('SUPPLIER_ATK');
+      setContactPerson('');
+      setPhone('');
+      setEmail('');
+      setAddress('');
+      setContractStartDate(new Date().toISOString().split('T')[0]);
+      setContractEndDate(
+        new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+      );
+      setPaymentTerms('TOP 30 Hari');
+      setRating(5);
+      setVendorNotes('');
+      setPermitNumber('');
+      setPermitName('');
+      setIssuer('');
+      setPermitCategory('GEDUNG_TATA_KOTA');
+      setIssuedDate(new Date().toISOString().split('T')[0]);
+      setExpiryDate(
+        new Date(Date.now() + 365 * 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+      );
+      setPicName('');
+      setAnnualCost(0);
+      setPermitNotes('');
+    }
+  }, [isOpen, mode]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (mode === 'vendor') {
+      if (!companyName.trim() || !contactPerson.trim()) return;
+      const newVendor: GAVendor = {
+        id: `vnd-${Date.now()}`,
+        companyName,
+        category: vendorCategory,
+        contactPerson,
+        phone,
+        email,
+        address,
+        contractStatus: 'AKTIF',
+        contractStartDate,
+        contractEndDate,
+        paymentTerms,
+        rating,
+        notes: vendorNotes,
+      };
+      GAStorage.addVendor(newVendor);
+    } else {
+      if (!permitName.trim() || !permitNumber.trim()) return;
+      const newPermit: OfficePermit = {
+        id: `pmt-${Date.now()}`,
+        permitNumber,
+        name: permitName,
+        issuer,
+        category: permitCategory,
+        issuedDate,
+        expiryDate,
+        status: 'BERLAKU',
+        picName: picName || 'General Affairs Lead',
+        annualCost: annualCost || undefined,
+        notes: permitNotes,
+      };
+      GAStorage.addPermit(newPermit);
+    }
+
+    if (onSaved) onSaved();
+    onClose();
+  };
+
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} contentClassName="sm:max-w-lg flex flex-col max-h-[90vh]">
+      <form onSubmit={handleSubmit} className="bg-white rounded-2xl w-full flex flex-col flex-1 min-h-0 overflow-hidden">
+        {/* Header */}
+        <div className="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between gap-3 bg-white shrink-0">
+          <div className="min-w-0">
+            <h3 className="font-bold text-slate-900 text-sm sm:text-base leading-tight truncate">
+              {mode === 'vendor' ? 'Tambah Rekanan Vendor Baru' : 'Catat Izin Operasional Gedung'}
+            </h3>
+            <p className="text-xs text-slate-500 font-medium mt-0.5 truncate">
+              {mode === 'vendor'
+                ? 'Mitra pengadaan ATK, katering, AC & logistik'
+                : 'Masa berlaku SLF, K3 genset & asuransi'}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer shrink-0"
+            title="Tutup"
+            aria-label="Tutup"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Form Body */}
+        <div className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-5 space-y-4">
+          {mode === 'vendor' ? (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Nama Perusahaan / Vendor *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Contoh: PT Sumber Makmur Abadi"
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Kategori Bidang Layanan *
+                  </label>
+                  <select
+                    value={vendorCategory}
+                    onChange={(e) => setVendorCategory(e.target.value as VendorCategory)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 font-medium"
+                  >
+                    <option value="SUPPLIER_ATK">Supplier ATK & Perlengkapan Kantor</option>
+                    <option value="IT_HARDWARE_LEASING">IT Hardware & Mesin Fotocopy</option>
+                    <option value="MAINTENANCE_AC_GEDUNG">Maintenance AC, HVAC & Genset</option>
+                    <option value="CATERING_PANTRY">Katering Makan & Pantry Kopi/Galon</option>
+                    <option value="CLEANING_SECURITY">Cleaning Service & Satpam</option>
+                    <option value="LOGISTIK_EKSPEDISI">Logistik & Ekspedisi Kurir</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Contact Person (PIC) *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Nama Sales / Account Exec"
+                    value={contactPerson}
+                    onChange={(e) => setContactPerson(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Nomor WhatsApp / Telp
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="0812-xxxx-xxxx"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 font-mono"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Syarat Pembayaran (Payment Terms)
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Contoh: TOP 30 Hari / COD / Net 14"
+                    value={paymentTerms}
+                    onChange={(e) => setPaymentTerms(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Rating Evaluasi Layanan (Skala 1-5)
+                  </label>
+                  <select
+                    value={rating}
+                    onChange={(e) => setRating(Number(e.target.value))}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 font-semibold text-slate-800"
+                  >
+                    <option value="5">5 - Sangat Memuaskan & Tepat Waktu</option>
+                    <option value="4">4 - Baik & Sesuai Kontrak</option>
+                    <option value="3">3 - Cukup Standar</option>
+                    <option value="2">2 - Kurang Memuaskan</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Mulai Kontrak / Kerja Sama
+                  </label>
+                  <input
+                    type="date"
+                    value={contractStartDate}
+                    onChange={(e) => setContractStartDate(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Berakhir Kontrak (Expiry)
+                  </label>
+                  <input
+                    type="date"
+                    value={contractEndDate}
+                    onChange={(e) => setContractEndDate(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Catatan GA / Perjanjian Khusus
+                </label>
+                <textarea
+                  rows={2}
+                  placeholder="Diskon khusus, garansi servis, nomor kontrak PKS..."
+                  value={vendorNotes}
+                  onChange={(e) => setVendorNotes(e.target.value)}
+                  className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Nama Dokumen Izin / Polis *
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Contoh: Sertifikat Laik Fungsi (SLF) / Polis Asuransi PAR"
+                  value={permitName}
+                  onChange={(e) => setPermitName(e.target.value)}
+                  className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Nomor Izin / Nomor Polis *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Nomor resmi SK / Polis"
+                    value={permitNumber}
+                    onChange={(e) => setPermitNumber(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 font-mono"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Kategori Perizinan
+                  </label>
+                  <select
+                    value={permitCategory}
+                    onChange={(e) => setPermitCategory(e.target.value as any)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 font-medium"
+                  >
+                    <option value="GEDUNG_TATA_KOTA">Gedung & Tata Kota (SLF / PBG)</option>
+                    <option value="K3_KESELAMATAN">K3 & Keselamatan Kerja (Genset/APAR/Lift)</option>
+                    <option value="ASURANSI_ASET">Asuransi Property & Kendaraan</option>
+                    <option value="LINGKUNGAN_AMDAL">Lingkungan & AMDAL / SPPL</option>
+                    <option value="LEGAL_OPERASIONAL">Legalitas Domisili Kantor</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Instansi Penerbit / Asuransi
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Contoh: PTSP DKI / Disnaker / Allianz"
+                    value={issuer}
+                    onChange={(e) => setIssuer(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    PIC Penanggung Jawab
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Nama staf GA pengelola"
+                    value={picName}
+                    onChange={(e) => setPicName(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Tanggal Terbit
+                  </label>
+                  <input
+                    type="date"
+                    value={issuedDate}
+                    onChange={(e) => setIssuedDate(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                    Tanggal Jatuh Tempo (Expiry) *
+                  </label>
+                  <input
+                    type="date"
+                    required
+                    value={expiryDate}
+                    onChange={(e) => setExpiryDate(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 font-bold"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Biaya Retribusi / Premi Tahunan (Rp)
+                </label>
+                <input
+                  type="number"
+                  placeholder="0"
+                  value={annualCost || ''}
+                  onChange={(e) => setAnnualCost(Number(e.target.value))}
+                  className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 font-mono"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Catatan Syarat Perpanjangan
+                </label>
+                <textarea
+                  rows={2}
+                  placeholder="Dokumen yang diperlukan saat perpanjangan..."
+                  value={permitNotes}
+                  onChange={(e) => setPermitNotes(e.target.value)}
+                  className="w-full px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
+                />
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Sticky Footer */}
+        <div className="p-4 sm:p-5 border-t border-slate-100 bg-white shrink-0">
+          <button
+            type="submit"
+            className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-sm rounded-xl transition-all shadow-2xs cursor-pointer"
+          >
+            {mode === 'vendor' ? 'Simpan Rekanan Vendor' : 'Simpan Izin Operasional'}
+          </button>
+        </div>
+      </form>
+    </Modal>
+  );
+};
