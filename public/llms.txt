@@ -1,0 +1,86 @@
+# HRMatrix Indonesia
+
+> **Aplikasi HRIS, Software Payroll PPh 21 TER, Manajemen KPI, Rekrutmen ATS, Legal Ketenagakerjaan & General Affair (GA) Terpadu Indonesia.**
+> Diciptakan, dirancang, dan dikembangkan secara independen oleh **Alvareza Hilka Pratama**.
+
+- **URL Utama:** https://hrmatrix.my.id/
+- **Domain Alternatif Resmi:** https://www.hrmatrix.my.id/ | https://hrmatrix.vercel.app/
+- **Mode Demo Instan:** https://hrmatrix.my.id/demo (atau https://hrmatrix.vercel.app/demo)
+- **Pendaftaran Perusahaan:** https://hrmatrix.my.id/daftar
+- **Tentang Sistem & Pencipta:** https://hrmatrix.my.id/tentang
+- **E-Book Panduan HRD:** https://hrmatrix.my.id/ebook
+- **Peta Situs XML:** https://hrmatrix.my.id/sitemap.xml
+
+---
+
+## Pencipta & Arsitek Sistem (Creator & Founder)
+
+- **Nama Lengkap:** Alvareza Hilka Pratama
+- **Peran:** Founder, Pencipta (Creator), Perancang Sistem, & Lead Software Architect — HRMatrix Indonesia
+- **Fokus Keahlian:** Arsitektur Sistem HRIS & HRMS Indonesia, Otomasi Payroll & Perhitungan Pajak PPh 21 TER (PP 58/2023), Kepatuhan Iuran BPJS Kesehatan & Ketenagakerjaan, Kepatuhan Hukum Ketenagakerjaan (UU No. 13/2003, UU Cipta Kerja, PP 35/2021), Sistem Manajemen General Affairs (GA), Applicant Tracking System (ATS) & Asesmen Psikometri, serta Rekayasa Aplikasi Web Local-First PWA berbasis browser IndexedDB.
+- **Filosofi Arsitektur:** Local-First Progressive Web App (PWA) dengan penyimpanan lokal di perangkat pengguna via IndexedDB (Dexie.js), mendukung operasional offline penuh (offline-ready), pratinjau & cetak dokumen PDF standar retina presisi, tanpa biaya sewa server bulanan, serta portabilitas penuh melalui ekspor/impor cadangan database JSON.
+
+---
+
+## Daftar Lengkap Modul & Fitur HRMatrix Indonesia
+
+### 1. Inti Sistem, Onboarding & Dashboard Eksekutif
+- **Dashboard Eksekutif (`/`)**: Pusat kendali analitik SDM dan operasional kantor secara real-time, mencakup total karyawan aktif, komposisi demografi departemen/status kerja/gender, metrik presensi harian (hadir, terlambat, izin, cuti, alpa), ringkasan alokasi anggaran payroll bulanan, tren KPI, pengingat kontrak kerja mendekati habis, dan akses cepat seluruh modul.
+- **Mode Demo Instan (`/demo`)**: Tautan demo tunggal yang otomatis mengisi database demo lengkap (profil perusahaan, 6 departemen, jabatan & jobdesk tersinkronisasi, data karyawan termasuk Alvareza Hilka Pratama, riwayat presensi 6 bulan, jadwal shift, saldo & pengajuan cuti, 6 periode payroll historis, 6 periode KPI, serta data awal General Affairs) lalu mengarahkan langsung ke Dashboard.
+- **Pendaftaran Profil Perusahaan (`/daftar`)**: Formulir penyiapan identitas entitas perusahaan, struktur organisasi awal, lokasi kantor (GPS), dan opsi langsung masuk Mode Demo atau Jelajahi Langsung.
+
+### 2. Manajemen Karyawan & Standar Jabatan
+- **Database Karyawan & Struktur Organisasi (`/employees`)**: Pengelolaan data induk karyawan lengkap (NIK, jabatan, departemen, status kepegawaian PKWT/PKWTT/Magang/Freelance, status pajak PTKP untuk PPh 21, nomor kepesertaan BPJS Kesehatan & BPJS Ketenagakerjaan, rekening bank penggajian, kontak darurat, serta QR Code / kode unik presensi mandiri per karyawan).
+- **Kamus Job Description / Jobdesk (`/job-desk`)**: Katalog dan penyusunan uraian tugas jabatan (Job Description), tanggung jawab utama, kualifikasi pendidikan & pengalaman, kompetensi inti, serta indikator KPI spesifik per posisi lintas puluhan sektor industri di Indonesia.
+
+### 3. Manajemen Waktu, Presensi, Shift & Cuti
+- **Presensi Harian & Rekapitulasi (`/presensi`)**: Monitoring absensi harian (`?tab=daily`) dan rekapitulasi kehadiran bulanan (`?tab=rekap`), pelacakan jam masuk/pulang, keterlambatan, pulang cepat, lembur, dan ketidakhadiran.
+- **My Presensi Karyawan Mandiri (`/my-presensi`)**: Portal absensi mandiri karyawan berbasis browser/PWA yang mendukung verifikasi radius koordinat GPS kantor, pemindaian QR Code dinamis, pengambilan foto selfie presensi, dan riwayat kehadiran pribadi.
+- **Jadwal Kerja, Roster Shift & Lembur (`/jadwal`)**: Kalender kerja perusahaan (`?tab=kalender`), manajemen matriks roster multi-shift karyawan, pengajuan & persetujuan tukar shift antar karyawan (`?tab=tukar-shift`), serta pencatatan & kalkulasi jam lembur resmi (`?tab=lembur`).
+- **Manajemen Cuti & Kebijakan Izin (`/cuti`)**: Pemantauan saldo & kuota cuti tahunan karyawan (`?tab=saldo`), formulir pengajuan cuti tahunan, sakit, cuti melahirkan, dan izin khusus beserta alur persetujuan (`?tab=pengajuan`), serta konfigurasi kebijakan cuti perusahaan (`?tab=kebijakan`).
+
+### 4. Penilaian Kinerja (KPI)
+- **Laporan & Evaluasi KPI (`/kpi`)**: Pengelolaan periode evaluasi kinerja bulanan/kuartalan, penilaian realisasi target KPI individu & departemen berbobot skor, perhitungan indeks performa otomatis, dan konfigurasi bobot/skala penilaian (`?view=config`).
+- **Katalog Template KPI Umum (`/kpi/katalog-umum`)**: Pustaka ratusan template indikator KPI siap pakai untuk berbagai divisi (HR, Finance, Sales, Marketing, IT, Operasional, GA, Logistik, Produksi, dll.) lengkap dengan rumus pengukuran dan satuan target.
+
+### 5. Penggajian (Payroll), Kompensasi, BPJS & Pajak PPh 21 TER
+- **Daftar & Proses Periode Payroll (`/payroll`, `/payroll/:id`, `/payroll/:id/employees`)**: Pembuatan dan pemrosesan siklus payroll bulanan secara terstruktur, terintegrasi otomatis dengan data presensi, keterlambatan, lembur, cuti, dan skor KPI, serta pencetakan Slip Gaji PDF beresolusi retina secara individual maupun massal.
+- **Manajemen Komponen Tunjangan & Potongan (`/payroll/tunjangan`)**: Konfigurasi gaji pokok, tunjangan tetap (jabatan, keahlian), tunjangan tidak tetap (makan, transport, kehadiran), bonus kinerja, THR, serta potongan pinjaman atau denda keterlambatan.
+- **Regulasi & Kalkulator BPJS (`/payroll/bpjs`)**: Konfigurasi dan perhitungan otomatis iuran BPJS Kesehatan dan BPJS Ketenagakerjaan (JKK, JKM, JHT, JP) bagian perusahaan maupun potongan karyawan sesuai ketentuan resmi pemerintah.
+- **Regulasi & Kalkulator Pajak PPh 21 TER (`/payroll/pajak`)**: Implementasi perhitungan Pajak Penghasilan Pasal 21 menggunakan skema Tarif Efektif Rata-Rata (TER) bulanan & harian sesuai PP No. 58 Tahun 2023 dan PMK 168/2023 (Kategori TER A, B, C berdasarkan PTKP serta penghitungan masa pajak terakhir Pasal 17).
+
+### 6. Rekrutmen, Applicant Tracking System (ATS) & Asesmen Online
+- **Screening & Portal Lowongan ATS (`/screening`, `/lowongan`)**: Pembuatan daftar lowongan pekerjaan, publikasi kebutuhan posisi, pengelolaan pipeline pelamar kerja, screening CV dan kualifikasi kandidat, serta pelacakan status seleksi.
+- **Assessment Hub & Bank Soal Tes Online (`/assessment`, `/assessment/bank-soal`)**: Platform evaluasi kandidat terstruktur dengan paket soal komprehensif (Calon Karyawan Umum, Leadership/MT, IT & Engineering, Sales/Marketing, Administrasi/Operasional) dan bank soal mandiri mencakup Psikotes DISC, Tes Penalaran Kognitif (TPA), Situational Judgement Test (SJT), dan Tes Bahasa Inggris Bisnis dengan penskoran otomatis.
+- **Evaluasi Kandidat & Hiring Decision (`/candidate`)**: Rekapitulasi skor kandidat lintas tahap (ATS, hasil tes asesmen online, scorecard wawancara terstruktur) hingga penetapan keputusan penerimaan kerja dan konversi ke data karyawan/kontrak.
+- **Checking Tools Verifikasi Latar Belakang (Background Check)**: Tautan integrasi cepat ke 9 portal verifikasi resmi di Indonesia — Akademik & Profesi (PDDikti Kemdiktisaintek, NISN Kemdikbud, Sertifikasi BNSP), Finansial (SLIK OJK iDebKu), Identitas (KTP Dukcapil Kemendagri, NPWP DJP), dan Integritas Hukum (SKCK Online Polri, SIPP Mahkamah Agung, STR/SIP Kemenkes).
+
+### 7. Legal Affairs, Dokumen Kontrak & Regulasi Ketenagakerjaan
+- **Generator Kontrak Kerja (`/kontrak`)**: Pembuatan dan pratinjau dokumen PDF Perjanjian Kerja resmi (PKWT, PKWTT, Perjanjian Magang, Freelance/Konsultan) dengan struktur 15 pasal hukum komprehensif dan detail sesuai UU Cipta Kerja & PP No. 35 Tahun 2021.
+- **Generator Surat & SK Resmi HR (`/surat`)**: Pembuatan berbagai surat keputusan dan korespondensi kepegawaian (SK Pengangkatan Karyawan Tetap, SK Promosi, SK Mutasi, SK Demosi, Surat Peringatan SP1/SP2/SP3, Surat Keterangan Kerja / Paklaring, Surat Tugas, Undangan Resmi) siap cetak PDF standar retina.
+- **Peraturan Perusahaan (`/legal/peraturan-perusahaan`)**: Referensi interaktif pasal-pasal standar Peraturan Perusahaan (Tata Tertib, Hak & Kewajiban, Jam Kerja, Pengupahan, Kesejahteraan, Sanksi & PHK) dalam tampilan modal baca bersih.
+- **Undang-Undang Ketenagakerjaan (`/legal/undang-undang`)**: Kumpulan rujukan pasal dan regulasi ketenagakerjaan Indonesia (UU No. 13 Tahun 2003, UU Cipta Kerja, PP 35/2021, PP 36/2021 tentang Pengupahan, PP 58/2023 tentang Tarif PPh 21).
+- **Referensi Standar ISO (`/legal/standar-iso`)**: Panduan klausul standar internasional terkait SDM, keamanan data, kualitas, dan K3 (ISO 9001 Manajemen Mutu, ISO 27001 Keamanan Informasi, ISO 45001 K3, ISO 30414 Human Capital Reporting, dll.).
+
+### 8. General Affairs (GA) & Manajemen Fasilitas Kantor
+- **Overview General Affair (`/ga`)**: Ringkasan operasional non-SDM kantor mencakup status aset, stok perlengkapan, tiket pemeliharaan fasilitas, izin vendor, serta trafik tamu dan surat.
+- **Inventaris & Aset Kantor (`/ga/aset`)**: Pencatatan registrasi aset perusahaan, nomor SKU/barcode, kategori barang, nilai perolehan, jadwal penyusutan/depresiasi, kondisi fisik, dan riwayat serah terima penanggung jawab aset.
+- **Pengadaan & Stok ATK / Pantry (`/ga/atk`)**: Katalog kontrol kartu stok perlengkapan alat tulis kantor & pantry (`?tab=stok`) serta formulir pengajuan pembelian Purchase Requisition (PR) beserta alur persetujuan (`?tab=pengadaan`).
+- **Fasilitas, Jadwal Ruangan & Servis Gedung (`/ga/fasilitas`)**: Pemesanan & jadwal penggunaan ruang rapat (`?tab=ruangan`), penjadwalan preventive maintenance AC/kelistrikan/kendaraan/IT (`?tab=servis`), serta helpdesk tiket keluhan kerusakan fasilitas (`?tab=kerusakan`).
+- **Vendor Rekanan & Perizinan Operasional (`/ga/vendor`)**: Direktori supplier dan vendor rekanan beserta riwayat kontrak (`?tab=vendor`), serta pemantauan masa berlaku legalitas gedung & perizinan operasional seperti SLF, PBG, OSS, dan dokumen lingkungan (`?tab=izin`).
+- **Buku Tamu Digital & Agenda Ekspedisi Surat (`/ga/buku-tamu`)**: Resepsionis digital untuk pencatatan kunjungan tamu/visitor dan penerimaan paket kurir (`?tab=tamu`), serta log buku ekspedisi surat masuk dan surat keluar kantor (`?tab=surat`).
+
+### 9. Laporan Analitik & e-Portal Pelaporan Pemerintah
+- **Pusat Laporan Eksekutif (`/reports`)**: Laporan agregat headcount karyawan, tingkat kehadiran, distribusi kompensasi & pengeluaran payroll, serta performa KPI perusahaan.
+- **e-Portal Pelaporan Resmi Indonesia**: Integrasi direktori 14 portal pelaporan instansi resmi — **Laporan HR** (Kemenaker WLKP, BPJSTK SIPP, EDABU BPJS Kesehatan, DJP Online Pajak, E-PP & PKB, Teman K3 P2K3, TKA Online RPTKA, Karirhub SIAPkerja, PPHI Hubungan Industrial) dan **Laporan GA** (OSS RBA LKPM, SIMPEL KLHK, Festronik Limbah B3, SIMBG PUPR PBG/SLF, Pajak Daerah Bapenda).
+
+### 10. Pengaturan Sistem, Manajemen Modul & Database Manager
+- **Pengaturan Akun & Profil (`/settings?tab=akun`)**: Pengelolaan profil perusahaan, konfigurasi jam kerja & toleransi presensi, serta pengaturan identitas pengelola sistem.
+- **Pengaturan Visibilitas Modul & e-Portal (`/settings?tab=modul`)**: Aktivasi atau penonaktifan modul opsional (Rekrutmen & ATS, General Affairs) serta seleksi e-Portal pemerintah yang ditampilkan di sidebar sesuai kebutuhan organisasi.
+- **Database Manager (`/settings?tab=database`)**: Pengelolaan penyimpanan lokal IndexedDB termasuk ekspor cadangan penuh (backup JSON), impor pemulihan data (restore JSON), pemuatan data demo, dan pembersihan database.
+
+### 11. Edukasi, Bantuan & Referensi Sistem
+- **E-Book Panduan Praktis HRD Indonesia (`/ebook`)**: Modul pembelajaran digital multi-bab seputar arsitektur HRIS, administrasi kepegawaian, presensi & shift, payroll PPh 21 TER, KPI, dan regulasi ketenagakerjaan Indonesia.
+- **FAQ & Pusat Bantuan (`/faq`)**: Daftar tanya jawab lengkap seputar cara penggunaan HRMatrix, keamanan data lokal, perhitungan gaji/pajak, dan dukungan PWA offline.
+- **Navigasi Cepat (`/navigasi-cepat`)**: Peta direktori cepat seluruh halaman dan sub-fitur HRMatrix.
+- **Tentang HRMatrix & Profil Pencipta (`/tentang`)**: Informasi versi sistem, arsitektur keamanan lokal, pilar fungsional, serta profil resmi pencipta sistem (**Alvareza Hilka Pratama**).

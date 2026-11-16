@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+Allow: /gambar/
+Allow: /llms.txt
+Allow: /daftar/
+Allow: /tentang/
+Allow: /ebook/
+Allow: /payroll/
+Allow: /legal/
+Allow: /ga/
+
+User-agent: Googlebot
+Allow: /
+Allow: /gambar/
+Allow: /llms.txt
+Allow: /daftar/
+Allow: /tentang/
+Allow: /ebook/
+Allow: /payroll/
+Allow: /legal/
+Allow: /ga/
+
+User-agent: Googlebot-Image
+Allow: /gambar/
+Allow: /gambar/logo.webp
+Allow: /gambar/metatag.webp
+
+Sitemap: https://hrmatrix.my.id/sitemap.xml

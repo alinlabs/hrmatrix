@@ -1,0 +1,384 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "regions": ["sin1"],
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        }
+      ]
+    },
+    {
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        }
+      ]
+    },
+    {
+      "source": "/((?!api/|assets/|gambar/|pedoman/|.*\\.(?:js|mjs|css|json|xml|txt|svg|png|webp|jpg|jpeg|gif|ico|woff|woff2|map|md)).*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        }
+      ]
+    },
+    {
+      "source": "/version.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/llms.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/manifest.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        }
+      ]
+    },
+    {
+      "source": "/manifest-presensi.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/gambar/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        }
+      ]
+    },
+    {
+      "source": "/pedoman/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        }
+      ]
+    },
+    {
+      "source": "/(icon.*\\.svg)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    },
+    {
+      "source": "/registerSW.js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        },
+        {
+          "key": "Vercel-CDN-Cache-Control",
+          "value": "public, s-maxage=31536000"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/favicon.ico",
+      "destination": "/gambar/favicon.png",
+      "permanent": true
+    },
+    {
+      "source": "/(favicon\\.png|apple-touch-icon.*\\.png|pwa-.*\\.png)",
+      "destination": "/gambar/$1",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap/",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/llms.txt",
+      "destination": "/llms.txt"
+    },
+    {
+      "source": "/manifest.json",
+      "destination": "/manifest.json"
+    },
+    {
+      "source": "/manifest-presensi.json",
+      "destination": "/manifest-presensi.json"
+    },
+    {
+      "source": "/sw.js",
+      "destination": "/sw.js"
+    },
+    {
+      "source": "/registerSW.js",
+      "destination": "/registerSW.js"
+    },
+    {
+      "source": "/((?!api/|assets/|gambar/|pedoman/|.*\\.(?:js|mjs|css|json|xml|txt|svg|png|webp|jpg|jpeg|gif|ico|woff|woff2|map|md)).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
